@@ -1,6 +1,6 @@
 package de.zeus.simpletrashbin;
 
-import de.zeus.simpletrashbin.commands.TrashBinCommand;
+import de.zeus.simpletrashbin.commands.*;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -19,6 +19,7 @@ public final class SimpleTrashBin extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new TrashBinListener(), this);
 
         getCommand("trashbin").setExecutor(new TrashBinCommand());
+        getCommand("opentrashbin").setExecutor(new OpenTrashBinCommand());
     }
 
     @Override

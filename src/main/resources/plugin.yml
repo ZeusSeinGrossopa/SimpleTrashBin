@@ -9,3 +9,4 @@ website: https://github.com/ZeusSeinGrossopa
 commands:
   trashbin:
     aliases: [ gettrashbin ]
+  opentrashbin:

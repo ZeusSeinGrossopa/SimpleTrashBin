@@ -61,7 +61,7 @@ public class TrashBinListener implements Listener {
         }
     }
 
-    private void createTrashBinInv(Player player) {
+    public static void createTrashBinInv(Player player) {
         Inventory inv = Bukkit.createInventory(null, 3 * 9, "§aTrashBin");
 
         ItemStack clearItem = new ItemStack(Material.BARRIER);
