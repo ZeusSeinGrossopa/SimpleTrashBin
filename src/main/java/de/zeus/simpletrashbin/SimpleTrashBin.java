@@ -8,6 +8,10 @@ public final class SimpleTrashBin extends JavaPlugin {
 
     private static SimpleTrashBin instance;
 
+    public static SimpleTrashBin getInstance() {
+        return instance;
+    }
+
     @Override
     public void onEnable() {
         instance = this;
@@ -18,9 +22,6 @@ public final class SimpleTrashBin extends JavaPlugin {
     }
 
     @Override
-    public void onDisable() {}
-
-    public static SimpleTrashBin getInstance() {
-        return instance;
+    public void onDisable() {
     }
 }

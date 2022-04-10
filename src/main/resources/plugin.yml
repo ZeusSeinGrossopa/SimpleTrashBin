@@ -8,4 +8,4 @@ website: https://github.com/ZeusSeinGrossopa
 
 commands:
   trashbin:
-    aliases: [gettrashbin]
+    aliases: [ gettrashbin ]

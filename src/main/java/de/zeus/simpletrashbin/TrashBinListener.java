@@ -24,8 +24,8 @@ public class TrashBinListener implements Listener {
         Block block = event.getBlockPlaced();
         ItemStack item = event.getItemInHand();
 
-        if(!event.isCancelled() && item.getType() == Material.DROPPER && item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals("§aTrashBin")) {
-            if(player.hasPermission("trashbin.create")) {
+        if (!event.isCancelled() && item.getType() == Material.DROPPER && item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals("§aTrashBin")) {
+            if (player.hasPermission("trashbin.create")) {
                 block.setMetadata("Trashbin", new FixedMetadataValue(SimpleTrashBin.getInstance(), "trashbin"));
             }
         }
@@ -35,11 +35,11 @@ public class TrashBinListener implements Listener {
     public void onPlayerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
 
-        if(event.getAction() != Action.RIGHT_CLICK_BLOCK || !player.hasPermission("trashbin.use")) return;
+        if (event.getAction() != Action.RIGHT_CLICK_BLOCK || !player.hasPermission("trashbin.use")) return;
 
         Block block = event.getClickedBlock();
 
-        if(block != null && !block.getMetadata("Trashbin").isEmpty()) {
+        if (block != null && !block.getMetadata("Trashbin").isEmpty()) {
             event.setCancelled(true);
             createTrashBinInv(player);
         }
@@ -49,8 +49,8 @@ public class TrashBinListener implements Listener {
     public void onInventoryClick(InventoryClickEvent event) {
         Player player = (Player) event.getWhoClicked();
 
-        if(player.hasPermission("trashbin.use") && event.getView().getTitle().equals("§aTrashBin")) {
-            if(event.getCurrentItem() != null && event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().hasDisplayName() && event.getCurrentItem().getItemMeta().getDisplayName().equals("§cClear")) {
+        if (player.hasPermission("trashbin.use") && event.getView().getTitle().equals("§aTrashBin")) {
+            if (event.getCurrentItem() != null && event.getCurrentItem().hasItemMeta() && event.getCurrentItem().getItemMeta().hasDisplayName() && event.getCurrentItem().getItemMeta().getDisplayName().equals("§cClear")) {
                 event.setCancelled(true);
 
                 Inventory inv = event.getClickedInventory();
