@@ -1,0 +1,11 @@
+name: SimpleTrashBin
+version: 1.0
+main: de.zeus.simpletrashbin.SimpleTrashBin
+api-version: 1.18
+authors: [ ZeusSeinGrossopa ]
+description: Adding a trash bin to minecraft
+website: https://github.com/ZeusSeinGrossopa
+
+commands:
+  trashbin:
+    aliases: [gettrashbin]
