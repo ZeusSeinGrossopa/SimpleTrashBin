@@ -2,6 +2,7 @@ package de.zeus.simpletrashbin;
 
 import de.zeus.simpletrashbin.commands.*;
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SimpleTrashBin extends JavaPlugin {
@@ -24,5 +25,14 @@ public final class SimpleTrashBin extends JavaPlugin {
 
     @Override
     public void onDisable() {
+    }
+
+    public static Sound getSound(String... soundNames) {
+        for (String soundName : soundNames) {
+            try {
+                return Sound.valueOf(soundName.toUpperCase());
+            } catch(Exception ignored) {}
+        }
+        return null;
     }
 }

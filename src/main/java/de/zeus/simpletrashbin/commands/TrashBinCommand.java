@@ -1,5 +1,6 @@
 package de.zeus.simpletrashbin.commands;
 
+import de.zeus.simpletrashbin.SimpleTrashBin;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.command.Command;
@@ -26,7 +27,7 @@ public class TrashBinCommand implements CommandExecutor {
 
                 player.getInventory().addItem(trashBinItem);
                 player.sendMessage("§aYou have successfully got the trash bin!");
-                player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 0.5F, 1.0F);
+                player.playSound(player.getLocation(), SimpleTrashBin.getSound("ENTITY_PLAYER_LEVELUP", "LEVEL_UP"), 0.5F, 1.0F);
             } else {
                 player.sendMessage("§cYou don't have permissions to execute this command!");
             }

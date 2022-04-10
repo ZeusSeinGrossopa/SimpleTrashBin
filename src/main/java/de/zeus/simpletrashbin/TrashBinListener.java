@@ -42,7 +42,7 @@ public class TrashBinListener implements Listener {
 
         if (block != null && !block.getMetadata("Trashbin").isEmpty()) {
             event.setCancelled(true);
-            player.playSound(player.getLocation(), Sound.BLOCK_CHEST_OPEN, 0.5F, 1.0F);
+            player.playSound(player.getLocation(), SimpleTrashBin.getSound("BLOCK_CHEST_OPEN", "CHEST_OPEN"), 0.5F, 1.0F);
             createTrashBinInv(player);
         }
     }
