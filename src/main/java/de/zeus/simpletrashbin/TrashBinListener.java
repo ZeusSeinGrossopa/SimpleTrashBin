@@ -2,6 +2,7 @@ package de.zeus.simpletrashbin;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -41,6 +42,7 @@ public class TrashBinListener implements Listener {
 
         if (block != null && !block.getMetadata("Trashbin").isEmpty()) {
             event.setCancelled(true);
+            player.playSound(player.getLocation(), Sound.BLOCK_CHEST_OPEN, 0.5F, 1.0F);
             createTrashBinInv(player);
         }
     }

@@ -1,6 +1,7 @@
 package de.zeus.simpletrashbin.commands;
 
 import de.zeus.simpletrashbin.TrashBinListener;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,6 +13,7 @@ public class OpenTrashBinCommand implements CommandExecutor {
         if(sender instanceof Player) {
             Player player = (Player) sender;
             if (player.hasPermission("trashbin.opencommand")) {
+                player.playSound(player.getLocation(), Sound.BLOCK_CHEST_OPEN, 0.5F, 1.0F);
                 TrashBinListener.createTrashBinInv(player);
             } else {
                 player.sendMessage("§cYou don't have permissions to execute this command!");
