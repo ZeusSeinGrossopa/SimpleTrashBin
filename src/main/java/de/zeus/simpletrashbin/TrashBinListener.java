@@ -9,13 +9,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.metadata.FixedMetadataValue;
 
 public class TrashBinListener implements Listener {
 
@@ -27,9 +27,16 @@ public class TrashBinListener implements Listener {
 
         if (!event.isCancelled() && item.getType() == Material.DROPPER && item.hasItemMeta() && item.getItemMeta().hasDisplayName() && item.getItemMeta().getDisplayName().equals("§aTrashBin")) {
             if (player.hasPermission("trashbin.create")) {
-                block.setMetadata("Trashbin", new FixedMetadataValue(SimpleTrashBin.getInstance(), "trashbin"));
+                SimpleTrashBin.getInstance().getLocations().add(block.getLocation());
             }
         }
+    }
+
+    @EventHandler
+    public void onBlockBreak(BlockBreakEvent event) {
+        Block block = event.getBlock();
+
+        SimpleTrashBin.getInstance().getLocations().remove(block.getLocation());
     }
 
     @EventHandler
@@ -40,7 +47,7 @@ public class TrashBinListener implements Listener {
 
         Block block = event.getClickedBlock();
 
-        if (block != null && !block.getMetadata("Trashbin").isEmpty()) {
+        if (block != null && SimpleTrashBin.getInstance().getLocations().contains(block.getLocation())) {
             event.setCancelled(true);
             player.playSound(player.getLocation(), SimpleTrashBin.getSound("BLOCK_CHEST_OPEN", "CHEST_OPEN"), 0.5F, 1.0F);
             createTrashBinInv(player);

@@ -2,7 +2,6 @@ package de.zeus.simpletrashbin.commands;
 
 import de.zeus.simpletrashbin.SimpleTrashBin;
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
